@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Random;
 
 public class Menu
 {
@@ -51,4 +52,11 @@ public class Menu
 		}
 	}
 	
+	public Dish getRandomDish(){
+		return dishes.get(new Random().nextInt(DISH_COUNT));
+	}
+	
+	public Beverage getRandomBeverage(){
+		return beverages.get(new Random().nextInt(BEVERAGE_COUNT));
+	}
 }

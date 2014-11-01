@@ -22,17 +22,19 @@ public class Beverage extends Menuitem
 		}
 	}
 	
-	public static double getPriceOfLowQualityBeverage() {
-		return priceOfLowQualityBeverage;
+	public double getPrice(){
+		if (getQuality() == Quality.HIGH){
+			return priceOfHighQualityBeverage;
+		}
+		else{
+			return priceOfLowQualityBeverage;
+		}
 	}
 
 	public static void setPriceOfLowQualityBeverage(double priceOfLowQualityBeverage) {
 		Beverage.priceOfLowQualityBeverage = priceOfLowQualityBeverage;
 	}
 
-	public static double getPriceOfHighQualityBeverage() {
-		return priceOfHighQualityBeverage;
-	}
 
 	public static void setPriceOfHighQualityBeverage(
 			double priceOfHighQualityBeverage) {

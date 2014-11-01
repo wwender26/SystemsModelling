@@ -22,16 +22,17 @@ public class Dish extends Menuitem
 		}
 	}
 
-	public static double getPriceOfHighQualityMeal() {
-		return priceOfHighQualityMeal;
+	public double getPrice() {
+		if (getQuality() == Quality.HIGH){
+			return priceOfHighQualityMeal;
+		}
+		else{
+			return priceOfLowQualityMeal;
+		}
 	}
 
 	public static void setPriceOfHighQualityMeal(double priceOfHighQualityMeal) {
 		Dish.priceOfHighQualityMeal = priceOfHighQualityMeal;
-	}
-
-	public static double getPriceOfLowQualityMeal() {
-		return priceOfLowQualityMeal;
 	}
 
 	public static void setPriceOfLowQualityMeal(double priceOfLowQualityMeal) {
