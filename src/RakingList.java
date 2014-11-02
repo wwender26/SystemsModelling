@@ -23,7 +23,7 @@ public class RakingList implements Serializable
 	}
 	
 	public void printRankings(){
-		System.out.println("-----RANKINGS-----\n");
+		System.out.println("\n-----RANKINGS-----\n");
 		System.out.println("NAME - SCORE\n");
 		for (String[] rank: rankings){
 			System.out.println(rank[0] + " - " + rank[1]);

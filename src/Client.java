@@ -18,8 +18,23 @@ public class Client extends Person
 	
 	private Order currentOrder;
 	
+	private double satisfactionPercent = 100;
+	
 	public Client(){
 		orders = new ArrayList<Order>();
+	}
+	
+	private void calculateSatisfactionPercentage(){
+		int multiplier =  ((int)(currentOrder.calculateTotalPrice()-currentOrder.calculateTotalIngredientPrice())/3);
+		if (multiplier <= 0){
+			return;
+		}
+		else{
+			satisfactionPercent = satisfactionPercent - 10*multiplier;
+		}
+		if (satisfactionPercent < 0){
+			satisfactionPercent = 0;
+		}
 	}
 	
 	public boolean isSatisfiedWithService(Waiter waiter)
@@ -89,12 +104,26 @@ public class Client extends Person
 	public void orderFoodAndPay(Budget budget, Menu menu, int day){
 		currentOrder = new Order(menu.getRandomBeverage(), menu.getRandomDish(), day);
 		budget.increaseBudget(currentOrder.calculateTotalPrice());
+		calculateSatisfactionPercentage();
 		orders.add(currentOrder);
 	}
 	
 	public void genStatistics( )
 	{
-		
+		double moneySpent = 0;
+		double avgCalorieCount = 0;
+		double avgVolume = 0;
+		for (Order order:orders){
+			moneySpent = moneySpent + order.calculateTotalPrice();
+			avgCalorieCount = avgCalorieCount + order.getOrderedDish().getCalorieCount();
+			avgVolume = avgVolume + order.getOrderedBeverage().getVolume();
+		}
+		avgCalorieCount = avgCalorieCount/orders.size();
+		avgVolume = avgVolume / orders.size();		
+		System.out.println("Money spent: " + moneySpent);
+		System.out.println("Average calories: " + avgCalorieCount);
+		System.out.println("Average volume: " + avgVolume);
+		System.out.println("Satsifaction Percent: "  + satisfactionPercent + "%");
 	}
 
 	public Order getCurrentOrder() {

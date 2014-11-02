@@ -1,17 +1,13 @@
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
-
-import javax.swing.plaf.SliderUI;
 
 /**
  * @(#) GameController.java
@@ -72,7 +68,7 @@ public class GameController {
 				}
 
 			} catch (InputMismatchException e) {
-				// Try again
+				scan = new Scanner(System.in);
 			}
 
 		}
@@ -110,7 +106,7 @@ public class GameController {
 					return move;
 				}
 			} catch (InputMismatchException e) {
-				// Lets try again
+				scan = new Scanner(System.in);
 			}
 
 		}
@@ -155,7 +151,7 @@ public class GameController {
 			try {
 				System.out.println("\n------------\n");
 
-				System.out.println("Its day " + currentday + "!");
+				System.out.println("Its the early morning of day " + currentday + "!");
 
 				dayloop: while (true) {
 
@@ -191,9 +187,7 @@ public class GameController {
 	}
 
 	public void endGame(boolean outOfBudget) {
-		
 		if (!outOfBudget){
-			printstats();
 			
 			saveRankings();
 			printstats();
@@ -209,6 +203,19 @@ public class GameController {
 				System.out.println("Error saving rakings!");
 			}
 		}
+		
+		System.out.print("Would you like to print stats for each client? (y for yes)");
+		String input = scan.next();
+		if (input.equalsIgnoreCase("y")){
+			System.out.println("Printing statistics of each client\n");
+			for (int i = 0; i<POPULATION_COUNT; i++){
+				System.out.println("Client " + i + ".");
+				population.get(i).genStatistics();
+				System.out.print("\n");
+			}
+		}	
+		
+		
 		System.out.println("\n---EXITING!---");
 		scan.close();
 	}
@@ -264,8 +271,6 @@ public class GameController {
 						return;
 					}
 				}
-			} catch (InputMismatchException e) {
-				// Lets try again
 			} catch (InsufficientFundsException e) {
 				System.out.println("Im sorry, you have insufficent funds!");
 			} catch (MaxLevelException e) {
@@ -276,7 +281,7 @@ public class GameController {
 	}
 
 	public void askPlayerDishesAttributes() {
-		System.out.println("Set the number of good quality dishes");
+		System.out.println("\nSet the number of good quality dishes");
 		int highQdishCount;
 		while (true) {
 			System.out.print("please enter a number between 0-5: ");
@@ -286,7 +291,7 @@ public class GameController {
 					break;
 				}
 			} catch (InputMismatchException e) {
-				// Let's try again!
+				scan = new Scanner(System.in);
 			}
 		}
 		double priceOfHQdishes;
@@ -299,7 +304,7 @@ public class GameController {
 					break;
 				}
 			} catch (InputMismatchException e) {
-				// Let's try again!
+				scan = new Scanner(System.in);
 			}
 		}
 		double priceOfLQdishes;
@@ -312,7 +317,7 @@ public class GameController {
 					break;
 				}
 			} catch (InputMismatchException e) {
-				// Let's try again!
+				scan = new Scanner(System.in);
 			}
 		}
 
@@ -323,7 +328,7 @@ public class GameController {
 
 	public void askPlayerBeverageAttributes() {
 
-		System.out.println("Set the number of good quality beverages");
+		System.out.println("\nSet the number of good quality beverages");
 		int highQbeverageCount;
 		while (true) {
 			System.out.print("please enter a number between 0-5: ");
@@ -333,7 +338,7 @@ public class GameController {
 					break;
 				}
 			} catch (InputMismatchException e) {
-				// Let's try again!
+				scan = new Scanner(System.in);
 			}
 		}
 		double priceOfHQbeverages;
@@ -346,7 +351,7 @@ public class GameController {
 					break;
 				}
 			} catch (InputMismatchException e) {
-				// Let's try again!
+				scan = new Scanner(System.in);
 			}
 		}
 		double priceOfLQbeverages;
@@ -359,17 +364,13 @@ public class GameController {
 					break;
 				}
 			} catch (InputMismatchException e) {
-				// Let's try again!
+				scan = new Scanner(System.in);
 			}
 		}
 
 		resturaunt.getMenu().setBeverageshAttributes(highQbeverageCount,
 				priceOfHQbeverages, priceOfLQbeverages);
 
-	}
-
-	public void askPlayerName() {
-		// Asks the player for his name and saves it.
 	}
 
 }
