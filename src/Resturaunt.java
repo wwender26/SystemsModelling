@@ -56,6 +56,7 @@ public class Resturaunt
 	
 	public void paySupplier() throws OutOfBudgetException
 	{
+		System.out.println("Paying supplier for ingredients");
 		budget.decreaseBudget(ownedMoneyToSupplier);
 		ownedMoneyToSupplier = 0;
 	}
@@ -85,11 +86,13 @@ public class Resturaunt
 	
 	public void payEndGameCosts( ) throws OutOfBudgetException
 	{
+		System.out.println("Paying end game costs (rent, services, cleaning etc)");
 		budget.decreaseBudget(END_OF_GAME_COSTS);
 	}
 	
 	public void paySalaries( ) throws OutOfBudgetException
 	{
+		System.out.println("Paying staff salaries!");
 		for (Waiter waiter:waiters){
 			waiter.paySalary(budget);
 		}
@@ -181,6 +184,10 @@ public class Resturaunt
 
 	public Budget getBudget() {
 		return budget;
+	}
+
+	public int getReputationScore() {
+		return reputationScore;
 	}
 	
 	
