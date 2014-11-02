@@ -2,7 +2,7 @@
  * @(#) Waiter.java
  */
 
-public class Waiter extends Staff
+public class Waiter extends Staff 
 {
 	private static final double SALARY_FOR_LOW_EXPERIENCE = 200.0;
 	private static final double SALARY_FOR_MEDIUM_EXPERIENCE = 300.0;
@@ -34,7 +34,6 @@ public class Waiter extends Staff
 
 	public double getTrainingCost() {
 		return TRAINING_COST;
-	}
-	
+	}	
 	
 }

@@ -39,6 +39,5 @@ public class Table
 	public Waiter getCurrentWaiter() {
 		return currentWaiter;
 	}
-	
-	
+		
 }

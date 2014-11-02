@@ -17,6 +17,14 @@ public abstract class Menuitem
 	public void setQuality(Quality quality) {
 		this.quality = quality;
 	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
 	
 	
 }

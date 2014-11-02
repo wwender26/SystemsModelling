@@ -12,6 +12,11 @@ public class Dish extends Menuitem
 	private static double priceOfHighQualityMeal;
 	
 	private static double priceOfLowQualityMeal;
+	
+	public Dish(String name, double calorieCount){
+		setName(name);
+		setCalorieCount(calorieCount);
+	}
 
 	public double getIngredientPrice() {
 		if (getQuality() == Quality.HIGH){
@@ -37,6 +42,14 @@ public class Dish extends Menuitem
 
 	public static void setPriceOfLowQualityMeal(double priceOfLowQualityMeal) {
 		Dish.priceOfLowQualityMeal = priceOfLowQualityMeal;
+	}
+
+	public double getCalorieCount() {
+		return calorieCount;
+	}
+
+	public void setCalorieCount(double calorieCount) {
+		this.calorieCount = calorieCount;
 	}
 	
 	

@@ -4,5 +4,5 @@
 
 public enum Experience
 {
-	HIGH,MEDIUM,LOW
+	LOW,MEDIUM,HIGH
 }

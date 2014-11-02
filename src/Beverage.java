@@ -12,6 +12,11 @@ public class Beverage extends Menuitem
 	private static double priceOfLowQualityBeverage;
 
 	private static double priceOfHighQualityBeverage;
+	
+	public Beverage(String name, double volume){
+		setName(name);
+		setVolume(volume);
+	}
 
 	public double getIngredientPrice() {
 		if (getQuality() == Quality.HIGH){
@@ -39,6 +44,14 @@ public class Beverage extends Menuitem
 	public static void setPriceOfHighQualityBeverage(
 			double priceOfHighQualityBeverage) {
 		Beverage.priceOfHighQualityBeverage = priceOfHighQualityBeverage;
+	}
+
+	public double getVolume() {
+		return volume;
+	}
+
+	public void setVolume(double volume) {
+		this.volume = volume;
 	}
 	
 	

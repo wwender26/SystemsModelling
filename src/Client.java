@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Random;
 
 /**
@@ -16,6 +17,10 @@ public class Client extends Person
 	private java.util.List<Order> orders;
 	
 	private Order currentOrder;
+	
+	public Client(){
+		orders = new ArrayList<Order>();
+	}
 	
 	public boolean isSatisfiedWithService(Waiter waiter)
 	{
@@ -90,6 +95,10 @@ public class Client extends Person
 	public void genStatistics( )
 	{
 		
+	}
+
+	public Order getCurrentOrder() {
+		return currentOrder;
 	}
 	
 	
