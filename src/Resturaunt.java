@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Resturaunt
 {
+	private static final int END_OF_GAME_COSTS = 4000;
 	private static final int TABLE_COUNT = 9;
 	private static final int WAITER_COUNT = 3;
 	
@@ -22,13 +23,11 @@ public class Resturaunt
 	
 	private Menu menu;
 	
-	private double budget = 10000.0;
-	
 	private int reputationScore = 15;
 	
-	private java.util.List<Client> clients;
+	private Budget budget;
 	
-	private Reputation reputation = Reputation.MEDIUM;
+	private java.util.List<Client> clients;
 	
 	private java.util.List<Table> tables;
 	
@@ -50,29 +49,47 @@ public class Resturaunt
 		
 	}
 	
-	public void increaseReputation( )
+	public void increaseReputation()
 	{
-		
+		reputationScore = reputationScore + 1;
 	}
 	
-	public void decreaseReputation( )
+	public void decreaseReputation()
 	{
-		
+		reputationScore = reputationScore - 1;
 	}
 	
-	public double getFinalScore( )
-	{
-		return budget;
+	public Reputation getReputation(){
+		if (reputationScore>=30){
+			return Reputation.HIGH;
+		}
+		else if (reputationScore >= 15){
+			return Reputation.MEDIUM;
+		}
+		else{
+			return Reputation.LOW;
+		}
 	}
 	
-	public void paySalaries( )
+	
+	public double getFinalScore( ) throws OutOfBudgetException
 	{
-		
+		budget.decreaseBudget(END_OF_GAME_COSTS);
+		return budget.getBudget();
+	}
+	
+	public void paySalaries( ) throws OutOfBudgetException
+	{
+		for (Waiter waiter:waiters){
+			waiter.paySalary(budget);
+		}
+		chef.paySalary(budget);
+		barman.paySalary(budget);
 	}
 	
 	public void startDay(int day, List<Client> visitors)
 	{
-		
+		this.clients = visitors;
 	}
 	
 	

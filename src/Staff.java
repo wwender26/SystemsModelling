@@ -20,6 +20,10 @@ public abstract class Staff extends Person
 		this.experience = experience;
 	}
 	
+	public void paySalary(Budget budget) throws OutOfBudgetException{
+		budget.decreaseBudget(getSalary());
+	}
+	
 	public abstract double getTrainingCost();
 	
 }

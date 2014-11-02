@@ -1,5 +1,5 @@
 
-public class OutOfBudgetException extends InsufficientFundsException{
+public class OutOfBudgetException extends Exception{
 
 
 }
