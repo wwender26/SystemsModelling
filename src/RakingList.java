@@ -1,5 +1,7 @@
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -23,6 +25,14 @@ public class RakingList implements Serializable
 	}
 	
 	public void printRankings(){
+		rankings.sort(new Comparator<String[]>() {
+
+			@Override
+			public int compare(String[] o1, String[] o2) {
+				return Integer.compare(Integer.parseInt(o2[1]), Integer.parseInt(o1[1]));
+			}
+			
+		});
 		System.out.println("\n-----RANKINGS-----\n");
 		System.out.println("NAME - SCORE\n");
 		for (String[] rank: rankings){

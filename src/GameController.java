@@ -275,6 +275,8 @@ public class GameController {
 				System.out.println("Im sorry, you have insufficent funds!");
 			} catch (MaxLevelException e) {
 				System.out.println("Already at max level!");
+			} catch (InputMismatchException e){
+				scan = new Scanner(System.in);
 			}
 
 		}
