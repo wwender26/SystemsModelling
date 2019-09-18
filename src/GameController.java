@@ -203,6 +203,8 @@ public class GameController {
 				System.out.println("Error saving rakings!");
 			}
 		}
+	}	
+		public void printStats(){
 		
 		System.out.print("Would you like to print stats for each client? (y for yes)");
 		String input = scan.next();
